@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שירותי תמיכה באוטומציות</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+       body {
+    font-family: 'Tahoma', 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #00d4aa 0%, #8a2be2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #2d3748;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+            border-bottom: 3px solid #00d4aa;
+        }
+        
+        .header img {
+            height: 70px;
+            max-width: 180px;
+            object-fit: contain;
+            margin: 0 auto 15px;
+            display: block;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: #2d3748;
+        }
+        
+        .header .subtitle {
+            font-size: 16px;
+            opacity: 0.8;
+            color: #4a5568;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .intro {
+            background: #f8fcff;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border-right: 5px solid #00d4aa;
+        }
+        
+        .intro h2 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .intro p {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #555;
+        }
+        
+        .combined-value {
+            margin-top: 20px;
+        }
+        
+        .expertise-section {
+            background: #f0fff4;
+            padding: 20px;
+            border-radius: 10px;
+            border-right: 4px solid #00d4aa;
+        }
+        
+        .expertise-section h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #00d4aa;
+        }
+        
+        .expertise-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .expertise-section li {
+            margin-bottom: 8px;
+            padding-right: 20px;
+            position: relative;
+        }
+        
+        .expertise-section li:before {
+            content: "✓";
+            position: absolute;
+            right: 0;
+            font-weight: bold;
+            color: #00d4aa;
+        }
+        
+        .packages-section {
+            margin: 40px 0;
+        }
+        
+        .packages-section h2 {
+            text-align: center;
+            color: #2d3748;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        
+        .discount-note {
+            background: linear-gradient(135deg, #00d4aa 0%, #8a2be2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .package-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 2px solid #ecf0f1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .package-card.basic {
+            border-top: 4px solid #718096;
+        }
+        
+        .package-card.preferred {
+            border-top: 4px solid #00d4aa;
+            position: relative;
+        }
+        
+        .package-card.premium {
+            border-top: 4px solid #8a2be2;
+            background: linear-gradient(135deg, #fff 0%, #faf5ff 100%);
+        }
+        
+        .package-title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .package-card.basic .package-title { color: #718096; }
+        .package-card.preferred .package-title { color: #00d4aa; }
+        .package-card.premium .package-title { color: #8a2be2; }
+        
+        .package-price {
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        
+        .package-price span {
+            font-size: 16px;
+            color: #7f8c8d;
+        }
+        
+        .package-features {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .package-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ecf0f1;
+            position: relative;
+            padding-right: 25px;
+        }
+        
+        .package-features li:before {
+            content: "✓";
+            position: absolute;
+            right: 0;
+            color: #00d4aa;
+            font-weight: bold;
+        }
+        
+        .package-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-label {
+            font-weight: bold;
+            color: #2d3748;
+        }
+        
+        .contact-info {
+            background: #f8fcff;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            border-right: 4px solid #00d4aa;
+            text-align: center;
+        }
+        
+        .contact-info h2 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
+        .footer {
+            background: #2d3748;
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+            border-top: 3px solid #00d4aa;
+        }
+        
+        .company-details {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        
+        .company-info h3 {
+            color: #00d4aa;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .company-info p,
+        .business-details p {
+            line-height: 1.8;
+            font-size: 14px;
+            color: #e2e8f0;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .header h1 {
+                font-size: 20px;
+            }
+            
+            .service-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <img src="https://i.imgur.com/RyTEiqm.png" alt="LeonAI">
+            <h1>שירותי תמיכה באוטומציות</h1>
+            <p class="subtitle">פתרונות מותאמים לעסקים בכל גודל</p>
+        </div>
+        
+        <!-- Content -->
+        <div class="content">
+            <!-- Introduction -->
+            <div class="intro">
+                <h2 style="margin-bottom: 10px;">פחות זמן על תקלות – יותר זמן לצמיחה</h2>
+כשאתם נתקלים בשגיאה לא ברורה במערכת ומבזבזים זמן על ניסוי וטעיה, אנחנו כבר יודעים מה הפתרון
+<p>באמצעות שירותים מותאמים אישית לעסקים בכל גודל, זמינות גבוהה, תגובה מיידית, והיכרות עמוקה עם מערכות מובילות כמו Make, Priority ו-ERP.
+אנחנו כאן כדי שהמערכות יעבדו בשבילכם – ולא להיפך.
+<p>
+
+<h2>הצעת הערך שלנו</h2>
+
+<p>✅ תוצאה מיידית ומדידה: חיסכון משמעותי בזמן, מניעת תקלות והשבתות יקרות, ושיפור מתמיד של תהליכי העבודה. <p>
+
+<p>✅ תמיכה קריטית לפי צורך: זמינות מותאמת לפי רמת הדחיפות והקריטיות של המערכות בארגון.<p>
+
+<p>✅ ליווי אישי וצמוד: אנו עובדים יד ביד עם מנהלי המערכות או בעלי העסק – כדי להבטיח שקט תפעולי ושיפור מתמיד.<p>
+
+<p>✅ תשואה גבוהה על ההשקעה (ROI): השירות שלנו לא רק פותר תקלות, אלא מונע אותן מראש ומוביל לאופטימיזציה של משאבים..</p>
+                
+                <div class="combined-value">
+                    <div class="expertise-section">
+                        <h3>המומחיות שלנו כוללת:</h3>
+                        <ul>
+                            <li>ניסיון עמוק עם Priority ERP</li>
+                            <li>שליטה מלאה בפלטפורמות Make.com ו-Integromat</li>
+                            <li>התאמה ספציפית לצרכים של השוק הישראלי</li>
+                            <li>זמינות מלאה בשפה העברית</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Packages Section -->
+            <div class="packages-section">
+                <h2>מסלולי תמיכה רבעוניים</h2>
+                <div class="discount-note">
+                    💰 מותנה בתשלום רבעון מראש + 10% הנחה על התחייבות שנתית
+                </div>
+                
+                <div class="packages-grid">
+                    <!-- Basic Package -->
+                    <div class="package-card basic">
+                        <div class="package-title">Basic</div>
+                        <div class="package-price">
+                            ₪9,000
+                            <span>לרבעון</span>
+                        </div>
+                        <ul class="package-features">
+                            <li><span class="feature-label">זמן תגובה:</span> עד 2 ימי עסקים</li>
+                            <li><span class="feature-label">שעות תמיכה:</span> עד 15 שעות לרבעון</li>
+                            <li><span class="feature-label">כולל:</span> תיעוד בסיסי</li>
+                            <li><span class="feature-label">מענה:</span> בדוא"ל</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Preferred Package -->
+                    <div class="package-card preferred">
+                        <div class="package-title">Preferred</div>
+                        <div class="package-price">
+                            ₪15,000
+                            <span>לרבעון</span>
+                        </div>
+                        <ul class="package-features">
+                            <li><span class="feature-label">זמן תגובה:</span> עד יום עסקים אחד</li>
+                            <li><span class="feature-label">שעות תמיכה:</span> עד 30 שעות לרבעון</li>
+                            <li><span class="feature-label">כולל:</span> המלצות ייעול</li>
+                            <li><span class="feature-label">מענה מהיר:</span> טלפון ודוא"ל</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Premium Package -->
+                    <div class="package-card premium">
+                        <div class="package-title">Premium</div>
+                        <div class="package-price">
+                            ₪27,000
+                            <span>לרבעון</span>
+                        </div>
+                        <ul class="package-features">
+                            <li><span class="feature-label">זמן תגובה:</span> עד 12 שעות</li>
+                            <li><span class="feature-label">שעות תמיכה:</span> עד 60 שעות לרבעון</li>
+                            <li><span class="feature-label">כולל:</span> ייעול תהליכים רבעוני</li>
+                            <li><span class="feature-label">מותאם אישית:</span> פתרונות ייחודיים</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <h2>מעוניינים בפרטים נוספים?</h2>
+                <p style="text-align: center; font-size: 18px; color: #2d3748; margin-bottom: 20px;">
+                    צרו קשר עמנו לקבלת הצעה מותאמת אישית לצרכים שלכם
+                </p>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="company-details">
+                <div class="footer-content">
+                    <div class="company-info">
+                        <h3>LeonAI LTD</h3>
+                        <p>
+                            <strong>כתובת:</strong> [כתובת החברה], [עיר], [מיקוד]<br>
+                            <strong>טלפון:</strong> [מספר טלפון] | <strong>נייד:</strong> [מספר נייד]<br>
+                            <strong>אימייל:</strong> [info@leonai.co.il] | <strong>אתר:</strong> [www.leonai.co.il]
+                        </p>
+                    </div>
+                    <div class="business-details">
+                        <p>
+                            <strong>ע.מ:</strong> [מספר עוסק מורשה] | <strong>ח.פ:</strong> [מספר חברה]<br>
+                            <strong>שעות פעילות:</strong> ראשון-חמישי 09:00-18:00<br>
+                            <strong>זמינות חירום:</strong> 24/7 לפי רמת חבילה
+                        </p>
+                    </div>
+                </div>
+                <hr style="border: none; border-top: 1px solid #4a5568; margin: 20px 0;">
+                <div class="footer-bottom">
+                    <p style="font-size: 14px; color: #a0aec0;">
+                        © 2025 LeonAI LTD. כל הזכויות שמורות | מסמך זה מהווה הצעה עסקית ובתוקף ל-30 יום מתאריך הנפקה
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
